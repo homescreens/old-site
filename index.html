@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<div class="about clearfix">
+  <h2>About Us</h2>
+  <p>This is a website currently containing [92] of the best homescreens posted on /wg/. This project is open-source; check us out on GitHub!</p>
+  <p class="col-left">Got a cool homescreen to submit? Check out the submit page for more information.</p>
+  <ul class="col-right">
+    <li><a href="#">[ SUBMIT ]</a></li>
+    <li><a href="https://github.com/homescreens/homescreens.github.io">[ GITHUB ]</a></li>
+  </ul>
+</div>
+
+<div class="news">
+  <h2>News</h2>
+  {% for post in site.posts limit: 1 %}
+  <p class="title">{{ post.date | date: "%m/%d/%Y" }} - {{ post.title }}</p>
+  {{ post.excerpt }}
+  {% endfor %}
+</div>
+
+
+
+<div class="img-grid clearfix">
+
+{% for image in site.data.homescreens %}
+  <div class="img-container {{ image.col-size }} {{ image.type }}">
+    <a href="{{ image.full_path }}" target="_blank"><img class="lazyload" data-src="{{ image.image_url }}" alt="image"></a>
+    {% if image.type == "webm" %}
+    <span class="play">&#9658;</span>
+    {% endif %}
+  </div>
+{% endfor %}
+
+</div>
+
+<!--To-Do:
+  Credit Play Icon Dude in Footer
+
+  <div>Icons made by <a href="http://www.flaticon.com/authors/appzgear" title="Appzgear">Appzgear</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+  
+-->
